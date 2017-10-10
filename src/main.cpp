@@ -1052,20 +1052,25 @@ int64_t GetProofOfStakeReward(int nHeight, int64_t nCoinAge, int64_t nFees)
 	
 	    else if(nBestHeight <= 14000)
             {
-            nSubsidy >>= nSubsidy /100000;  //code error
+            nSubsidy >>= nSubsidy /100000;  // accident error needed fixing
             }
 	
 	    else if(nBestHeight <= 25000)
             {
             nSubsidy = nSubsidy * 5 / 2 ;   //2500%
             }
-			
+
+	    else if(nBestHeight > 60000 && nBestHeight < 60500 || nBestHeight > 80000 && nBestHeight < 80500)
+            {
+            nSubsidy = nSubsidy * 5 ;  //5000%
+            }	 
+            
 	    else if(nBestHeight <= 100000)
             {
             nSubsidy = nSubsidy * 1 ;  //1000%   
             }
 				
-	    else if(nBestHeight <= 105000)
+	    else if(nBestHeight <= 105000 || nBestHeight > 120000 && nBestHeight < 120500 || nBestHeight > 140000 && nBestHeight < 140500)
             {
             nSubsidy = nSubsidy * 5 ;  //5000%
             }
@@ -1074,23 +1079,29 @@ int64_t GetProofOfStakeReward(int nHeight, int64_t nCoinAge, int64_t nFees)
             {
             nSubsidy = nSubsidy * 1 ;  //1000%
             }
-	
+            
+	    else if(nBestHeight > 160000 && nBestHeight < 160500 || nBestHeight > 180000 && nBestHeight < 180500)
+            {
+            nSubsidy = nSubsidy * 5 ;  //5000%
+            }
+            
 	    else if(nBestHeight <= 300000)
             {
             nSubsidy = nSubsidy * 2 ;  //2000%
             }
 	
-	    else if(nBestHeight <= 305000)
+	    else if(nBestHeight <= 305000 || nBestHeight > 320000 && nBestHeight < 320500 || nBestHeight > 340000 && nBestHeight < 340500 || nBestHeight > 360000 && nBestHeight < 360500 || nBestHeight > 380000 && nBestHeight < 380500 || nBestHeight > 400000 && nBestHeight < 400500 || nBestHeight > 420000 && nBestHeight < 420500 || nBestHeight > 440000 && nBestHeight < 440500 || nBestHeight > 460000 && nBestHeight < 460500 || nBestHeight > 480000 && nBestHeight < 480500 )
             {
             nSubsidy = nSubsidy * 5 ;  //5000%
             }
+            
 	
 	    else if(nBestHeight <= 500000)
             {
             nSubsidy = nSubsidy * 1 ;  //1000%
             }
 	
-	    else if(nBestHeight <= 5000000)
+	    else 
             {
             nSubsidy >>= (nHeight / 100000);  //1000% halving every 100k blocks
             }
